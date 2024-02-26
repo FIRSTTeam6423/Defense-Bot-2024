@@ -7,6 +7,8 @@ package frc.robot;
 import com.pathplanner.lib.auto.AutoBuilder;
 import com.pathplanner.lib.auto.NamedCommands;
 
+import edu.wpi.first.wpilibj.AddressableLED;
+import edu.wpi.first.wpilibj.AddressableLEDBuffer;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
@@ -35,15 +37,16 @@ import frc.robot.Drive.Drive;
  */
 
 public class RobotContainer {
- // private static final VisionUtil visionUtil = new VisionUtil();
+  // private static final VisionUtil visionUtil = new VisionUtil();
   private static final Drive drive = new Drive();
 
   private static XboxController driver = new XboxController(0);
   private static CommandXboxController driverCommandController = new CommandXboxController(0);
 
   private SendableChooser<Command> autoChooser;
-  
-  /** The container for the robot. Contains subsystems, OI devices, and commands. */
+  /**
+   * The container for the robot. Contains subsystems, OI devices, and commands.
+   */
   public RobotContainer() {
     configureDefaultCommands();
     configureBindings();
@@ -68,35 +71,38 @@ public class RobotContainer {
    * {@link edu.wpi.first.wpilibj2.command.button.CommandJoystick Flight
    * joysticks}.
    */
-  private void configureBindings() {}
-  
+  private void configureBindings() {
+  }
+
   public void registerAutoCommands() {
-    NamedCommands.registerCommand("Intake", fakeStartIntake().alongWith(new WaitCommand(3)).andThen(fakeRetractIntake()));
-    NamedCommands.registerCommand("ShooterRoll", fakeShooterSpinup().withTimeout(1).andThen(fakeIntakeFeed().withTimeout(1)).andThen(fakeShooterStopRollers().alongWith(fakeIntakeStopRollers())));
+    NamedCommands.registerCommand("Intake",
+        fakeStartIntake().alongWith(new WaitCommand(3)).andThen(fakeRetractIntake()));
+    NamedCommands.registerCommand("ShooterRoll", fakeShooterSpinup().withTimeout(1)
+        .andThen(fakeIntakeFeed().withTimeout(1)).andThen(fakeShooterStopRollers().alongWith(fakeIntakeStopRollers())));
   }
 
   public Command fakeStartIntake() {
-    return Commands.runOnce(()->System.out.println("Start Intake!"));
+    return Commands.runOnce(() -> System.out.println("Start Intake!"));
   }
 
   public Command fakeRetractIntake() {
-    return Commands.runOnce(()->System.out.println("Retract Intake!"));
+    return Commands.runOnce(() -> System.out.println("Retract Intake!"));
   }
 
   public Command fakeShooterSpinup() {
-    return Commands.run(()->System.out.println("Shooter Spinup!"));
+    return Commands.run(() -> System.out.println("Shooter Spinup!"));
   }
 
   public Command fakeIntakeFeed() {
-    return Commands.run(()->System.out.println("Intake Feed!"));
+    return Commands.run(() -> System.out.println("Intake Feed!"));
   }
 
-  public Command fakeShooterStopRollers(){
-    return Commands.runOnce(()->System.out.println("Stop shooter rollers!"));
+  public Command fakeShooterStopRollers() {
+    return Commands.runOnce(() -> System.out.println("Stop shooter rollers!"));
   }
 
   public Command fakeIntakeStopRollers() {
-    return Commands.runOnce(()->System.out.println("Stop Intake Rollers!"));
+    return Commands.runOnce(() -> System.out.println("Stop Intake Rollers!"));
   }
 
   public Command getAutonomousCommand() {

@@ -33,6 +33,8 @@ import static edu.wpi.first.units.MutableMeasure.mutable;
 import edu.wpi.first.math.kinematics.SwerveDriveKinematics;
 import edu.wpi.first.math.kinematics.SwerveDriveOdometry;
 import edu.wpi.first.math.kinematics.SwerveModulePosition;
+import edu.wpi.first.wpilibj.AddressableLED;
+import edu.wpi.first.wpilibj.AddressableLEDBuffer;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.RobotController;
 import edu.wpi.first.wpilibj.DriverStation.Alliance;
@@ -65,6 +67,11 @@ public class Drive extends SubsystemBase {
 	private final ModuleIO m_backRight;
 
 	public Rotation2d simRotation = new Rotation2d();
+
+
+    // Reuse buffer
+    // Default to a length of 60, start empty output
+    // Length is expensive to set, so only set it once, then just update data
 
 	// WPILib
 	StructArrayPublisher<SwerveModuleState> swervePublisher = NetworkTableInstance.getDefault()
@@ -145,7 +152,6 @@ public class Drive extends SubsystemBase {
 				m_backLeft.getPosition(),
 				m_backRight.getPosition()
 		}, pose);
-		setChassisSpeeds(new ChassisSpeeds(0, 0, 0));
 	}
 
 	// -- COMANDS --
@@ -291,6 +297,7 @@ public class Drive extends SubsystemBase {
 					Constants.BACKRIGHT_PIVOT,
 					Constants.BACKRIGHT_ABS_ENCODER, true);
 		}
+		gyro.reset();
 
 		m_odometry = new SwerveDriveOdometry(kinematics, getHeading2d(),
 				new SwerveModulePosition[] {
@@ -299,7 +306,6 @@ public class Drive extends SubsystemBase {
 						m_backLeft.getPosition(),
 						m_backRight.getPosition()
 				}, new Pose2d(0.0, 0.0, new Rotation2d()));
-		gyro.reset();
 		m_sysIdRoutine = new SysIdRoutine(
 				// Empty config defaults to 1 volt/second ramp rate and 7 volt step voltage.
 				new SysIdRoutine.Config(),
