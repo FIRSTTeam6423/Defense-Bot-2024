@@ -60,10 +60,10 @@ public final class Constants {
 
     public static final double DEGREES_PER_ROTATION = 360;
 
-    public static final double FRONTLEFT_ABS_ENCODER_OFFSET = 317.;
-    public static final double FRONTRIGHT_ABS_ENCODER_OFFSET = 246;
-    public static final double BACKLEFT_ABS_ENCODER_OFFSET = 236;
-    public static final double BACKRIGHT_ABS_ENCODER_OFFSET = 275;
+    public static final double FRONTLEFT_ABS_ENCODER_OFFSET = 116.233;
+    public static final double FRONTRIGHT_ABS_ENCODER_OFFSET = 77.01;
+    public static final double BACKLEFT_ABS_ENCODER_OFFSET = 73.7016 + 180;
+    public static final double BACKRIGHT_ABS_ENCODER_OFFSET = 131.52;
 
     public static final double[] ABS_ENCODER_OFFSETS = {
         FRONTLEFT_ABS_ENCODER_OFFSET,

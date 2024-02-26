@@ -256,12 +256,12 @@ public class Drive extends SubsystemBase {
 					Constants.FRONTLEFT_ABS_ENCODER, true);
 			m_frontRight = new SwerveModule(
 					Constants.FRONTRIGHT_DRIVE,
-					false,
+					true,
 					Constants.FRONTRIGHT_PIVOT,
 					Constants.FRONTRIGHT_ABS_ENCODER, true);
 			m_backLeft = new SwerveModule(
 					Constants.BACKLEFT_DRIVE,
-					false,
+					true,
 					Constants.BACKLEFT_PIVOT,
 					Constants.BACKLEFT_ABS_ENCODER, true);
 			m_backRight = new SwerveModule(
