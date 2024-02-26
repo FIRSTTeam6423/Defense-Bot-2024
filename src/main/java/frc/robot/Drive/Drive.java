@@ -257,43 +257,43 @@ public class Drive extends SubsystemBase {
 		if (Robot.isReal()) {
 			m_frontLeft = new SwerveModule(
 					Constants.FRONTLEFT_DRIVE,
-					true,
+					false,
 					Constants.FRONTLEFT_PIVOT,
 					Constants.FRONTLEFT_ABS_ENCODER, true);
 			m_frontRight = new SwerveModule(
 					Constants.FRONTRIGHT_DRIVE,
-					true,
+					false,
 					Constants.FRONTRIGHT_PIVOT,
 					Constants.FRONTRIGHT_ABS_ENCODER, true);
 			m_backLeft = new SwerveModule(
 					Constants.BACKLEFT_DRIVE,
-					true,
+					false,
 					Constants.BACKLEFT_PIVOT,
 					Constants.BACKLEFT_ABS_ENCODER, true);
 			m_backRight = new SwerveModule(
 					Constants.BACKRIGHT_DRIVE,
-					true,
+					false,
 					Constants.BACKRIGHT_PIVOT,
 					Constants.BACKRIGHT_ABS_ENCODER, true);
 		} else {
 			m_frontLeft = new SimModule(
 					Constants.FRONTLEFT_DRIVE,
-					true,
+					false,//true,
 					Constants.FRONTLEFT_PIVOT,
 					Constants.FRONTLEFT_ABS_ENCODER, true);
 			m_frontRight = new SimModule(
 					Constants.FRONTRIGHT_DRIVE,
-					false,
+					true,//false,
 					Constants.FRONTRIGHT_PIVOT,
 					Constants.FRONTRIGHT_ABS_ENCODER, true);
 			m_backLeft = new SimModule(
 					Constants.BACKLEFT_DRIVE,
-					false,
+					true,//false,
 					Constants.BACKLEFT_PIVOT,
 					Constants.BACKLEFT_ABS_ENCODER, true);
 			m_backRight = new SimModule(
 					Constants.BACKRIGHT_DRIVE,
-					true,
+					false,//true,
 					Constants.BACKRIGHT_PIVOT,
 					Constants.BACKRIGHT_ABS_ENCODER, true);
 		}
